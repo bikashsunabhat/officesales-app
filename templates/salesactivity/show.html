@@ -1,0 +1,39 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Sales Records</title>
+         {% load static %}
+        <link rel="stylesheet" href="{% static 'salesactivity/css/bootstrap.css' %}"/>
+    </head>
+    <body>
+    <table class="table table-striped table-bordered table-sm">
+        <thead class="thead-dark">
+        <tr>
+            <th>Branch ID</th>
+            <th>Branch Name</th>
+            <th>Sales Amount</th>
+            <th>Year</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+    {% for salesactivity in salesactivities %}
+        <tr>
+            <td>{{ salesactivity.bid }}</td>
+            <td>{{ salesactivity.bname }}</td>
+            <td>{{ salesactivity.salesamount }}</td>
+            <td>{{ salesactivity.year}}</td>
+            <td>
+                <a href="/edit/{{ salesactivity.bid }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+                <a href="/delete/{{ salesactivity.bid }}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <center><a href="/sales" class="btn btn-primary">Add New Record</a></center>
+    </body>
+    </html>
